@@ -1,0 +1,45 @@
+TRAIN:
+  BATCH_SIZE: 1
+  EPOCHS: 100
+  OPTIMIZER_TYPE: 'adamw'
+  INIT_LR: 0.001
+  MIN_LR: 0.00001
+  LR_DECAY_TYPE: 'cos'
+  LOSS_TYPE: 'MSE'        # MSE, fft, L1, neg_pearson
+  DATA:
+    FS: 30
+    DATA_PATH: ["H:\\datasets\\RPPG\\UBFC-rppg\\proc"]
+    ST: 0
+    ED: 0.8
+    PREPROCESS:
+      IMG_SIZE: 72
+      TIME_LENGTH: 256
+      OVERLAP: 0
+      MODE: 'DIFF'
+      DIFF_NORM_METHOD: 'A-B' 
+      VIDEO_NORM_PER_CHANNEL: True
+VAL:
+  BATCH_SIZE: 1
+  DATA:
+    FS: 30
+    DATA_PATH: ["H:\\datasets\\RPPG\\UBFC-rppg\\proc"]
+    ST: 0.8
+    ED: 1
+    PERIOD: 1        
+    PREPROCESS:
+      IMG_SIZE: 72
+      TIME_LENGTH: 256
+      OVERLAP: 0
+      MODE: 'DIFF'
+      DIFF_NORM_METHOD: 'A-B'  
+      VIDEO_NORM_PER_CHANNEL: True 
+DEVICE:
+  NUM_WORKERS: 4
+MODEL:
+  NAME: 'FM_FCN'
+  DROP_RATE: 0.2
+  FRAME_DEPTH: 10
+
+WORK_PATH: "../log/"
+
+
